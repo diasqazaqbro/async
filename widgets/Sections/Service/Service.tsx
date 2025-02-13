@@ -1,0 +1,211 @@
+import React, { useState } from "react";
+import styled, { keyframes } from "styled-components";
+import { ServiceId, services } from "./types";
+import SvgArrow from "@shared/icons/SvgArrow";
+import Link from "next/link";
+import Image from "next/image";
+
+const Service = () => {
+  const [active, setActive] = useState<ServiceId>(ServiceId.MOBILE_APPS);
+  const currentService = services.find((service) => service.id === active);
+
+  return (
+    <div className="container">
+      <Root>
+        <Category>[ Услуги ]</Category>
+        <Title>
+          Стоимость наших услуг формируется индивидуально и зависит от
+          особенностей каждого проекта
+        </Title>
+        <Container>
+          <Navigation>
+            {services.map((service) => (
+              <Item
+                key={service.id}
+                active={active === service.id}
+                onClick={() => setActive(service.id)}
+              >
+                <StyledLink href={`#${service.id}`}>
+                  {service.title} <SvgArrow />
+                </StyledLink>
+              </Item>
+            ))}
+          </Navigation>
+          <View key={active}>
+            <LeftView>
+              <Duration>{currentService?.duration}</Duration>
+              <Description1>{currentService?.description1}</Description1>
+            </LeftView>
+            <RightView>
+              <Bubbles>
+                <StyledImage
+                  src={currentService?.image!}
+                  alt="Bubbles"
+                  layout="fill"
+                  objectFit="contain"
+                  priority
+                />
+              </Bubbles>
+              <Description2>{currentService?.description2}</Description2>
+            </RightView>
+          </View>
+        </Container>
+      </Root>
+    </div>
+  );
+};
+
+// 🔹 Анимация появления контента
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+// 🔹 Анимация при смене изображения
+const scaleIn = keyframes`
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+`;
+
+const Root = styled.section`
+  width: 100%;
+  margin: 280px 0;
+`;
+
+const Category = styled.span`
+  font-weight: 400;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: ${({ theme: { colors } }) => colors.additional.category};
+  margin-right: 15%;
+`;
+
+const Title = styled.span`
+  font-weight: 500;
+  font-size: 40px;
+  text-transform: uppercase;
+  color: #282828;
+  @media (max-width: 990px) {
+    font-size: 32px;
+  }
+  @media (max-width: 642px) {
+    font-size: 20px;
+  }
+`;
+
+const Container = styled.div`
+  display: flex;
+  margin-top: 80px;
+  justify-content: space-between;
+  @media (max-width: 900px) {
+    flex-direction: column-reverse;
+  }
+`;
+
+const Navigation = styled.div`
+  width: 37%;
+  @media (max-width: 900px) {
+    width: 100%;
+  }
+`;
+
+const Item = styled.div<{ active: boolean }>`
+  border-bottom: 1px solid #282828;
+  padding: 0px 0px 2px 0px;
+  font-weight: 300;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: ${({ active }) => (active ? "#282828" : "rgba(40, 40, 40, 0.5)")};
+  display: flex;
+  align-items: center;
+  margin: 22px 0;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    color: #282828;
+    transform: translateX(5px);
+  }
+`;
+
+const StyledLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+`;
+
+const View = styled.div`
+  width: 60%;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  top: -20px;
+  animation: ${fadeIn} 0.5s ease;
+  @media (max-width: 900px) {
+    width: 100%;
+  }
+`;
+
+const LeftView = styled.div`
+  width: 50%;
+`;
+
+const RightView = styled.div`
+  width: 50%;
+`;
+
+const Duration = styled.div`
+  font-weight: 800;
+  font-size: 32px;
+  text-transform: uppercase;
+  color: #282828;
+`;
+
+const Description1 = styled.div`
+  font-weight: 400;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #282828;
+  margin-top: 40px;
+  animation: ${fadeIn} 0.5s ease;
+`;
+
+const Bubbles = styled.div`
+  position: relative;
+  width: 100%;
+  width: 334px;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const StyledImage = styled(Image)`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: ${scaleIn} 0.4s ease-in-out;
+`;
+
+const Description2 = styled.div`
+  font-weight: 400;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #282828;
+  margin-top: 40px;
+  animation: ${fadeIn} 0.5s ease;
+`;
+
+export default Service;
