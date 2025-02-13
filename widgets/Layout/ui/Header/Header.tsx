@@ -59,6 +59,7 @@ const Root = styled.div`
     right: auto;
     transform: translateX(1%);
     width: 98%;
+    top: 15px;
   }
 `;
 

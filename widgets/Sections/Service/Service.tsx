@@ -95,7 +95,10 @@ const Wrapper = styled.div`
 `;
 
 const TextContainer = styled.div`
-  margin-top: 120px;
+  margin-top: 140px;
+  @media (max-width: 900px) {
+    margin-bottom: 40px;
+  }
 `;
 
 const Category = styled.span`
@@ -112,22 +115,20 @@ const Title = styled.span`
   text-transform: uppercase;
   color: #282828;
   @media (max-width: 990px) {
-    font-size: 20px;
+    font-size: 32px;
   }
   @media (max-width: 777px) {
-    font-size: 12px;
-  }
-  @media (max-width: 590) {
-    display: none;
+    font-size: 20px;
   }
 `;
 
 const Container = styled.div`
   display: flex;
-  /* margin-top: 80px; */
   justify-content: space-between;
   @media (max-width: 900px) {
+    scroll-snap-align: start;
     flex-direction: column-reverse;
+    width: 100%;
   }
 `;
 

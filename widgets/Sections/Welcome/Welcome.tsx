@@ -56,11 +56,14 @@ const Flex = styled.div`
 `;
 
 const TopContainer = styled.div`
-  flex-grow: 1;
 `;
 
 const Wrapper = styled.div`
   margin-bottom: 20px;
+  @media (max-width: 990px) {
+    position: relative;
+    bottom: 10%;
+  }
 `;
 
 const BottomContainer = styled.div`
@@ -86,7 +89,8 @@ const Description = styled.div`
   color: #696969;
   @media (max-width: 990px) {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 20px;  font-size: 16px;
+
   }
 `;
 

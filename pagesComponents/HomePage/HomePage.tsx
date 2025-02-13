@@ -15,7 +15,7 @@ const HomePage = () => {
       <div className="wrapper">
         <Welcome />
         <AboutUs />
-        {/* <Projects /> */}
+        <Projects />
         <Service />
         {/* <Stages /> */}
         <Contacts />

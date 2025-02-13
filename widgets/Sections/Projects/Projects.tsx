@@ -38,11 +38,13 @@ const Projects = () => {
       </Background>
       <div className="container">
         <Wrapper>
-          <Category>| Проекты |</Category>
-          <Title>
-            нам доверяют крупные компании и стартапы: помогаем вдохнуть новую
-            жизнь в масштабные проекты или создать продукт с нуля
-          </Title>
+          <TextContainer>
+            <Category>| Проекты |</Category>
+            <Title>
+              нам доверяют крупные компании и стартапы: помогаем вдохнуть новую
+              жизнь в масштабные проекты или создать продукт с нуля
+            </Title>
+          </TextContainer>
           <Container>
             {images.map(({ src, width, height }, index) => (
               <Item key={index}>
@@ -65,10 +67,32 @@ const Projects = () => {
 
 const Root = styled.section`
   width: 100%;
+  margin-bottom: 260px;
+  @media (max-width: 942px) {
+    margin-bottom: 120%;
+  }
+  @media (max-width: 650px) {
+    margin-bottom: 160%;
+  }
+  @media (max-width: 540px) {
+    margin-bottom: 200%;
+  }
+  @media (max-width: 410px) {
+    margin-bottom: 240%;
+  }
+  @media (max-width: 345px) {
+    margin-bottom: 280%;
+  }
+  @media (max-width: 300) {
+    margin-bottom: 320%;
+  }
 `;
 
 const Background = styled.div`
   position: relative;
+  @media (max-width: 730px) {
+    display: none;
+  }
 `;
 
 const Bubbles = styled.div`
@@ -77,23 +101,24 @@ const Bubbles = styled.div`
   left: 460px;
   width: 100vh;
   height: 100vh;
-  max-height: 1656px;
   display: flex;
   align-items: center;
   justify-content: center;
   @media (max-width: ${BreakpointsEnum.md}px) {
-    top: -90px;
     left: 0px;
+    top: 90px;
   }
 `;
 
-const StyledImage = styled(Image)`
-  object-fit: contain;
-`;
+const StyledImage = styled(Image)``;
 
-const Wrapper = styled.section`
+const Wrapper = styled.div`
   position: relative;
   z-index: 2;
+`;
+
+const TextContainer = styled.div`
+  margin-top: 140px;
 `;
 
 const Category = styled.span`
@@ -123,6 +148,7 @@ const Container = styled.div`
   gap: 30px;
   flex-wrap: wrap;
   margin-top: 48px;
+  scroll-snap-align: start;
   @media (max-width: 640px) {
     gap: 12px;
   }

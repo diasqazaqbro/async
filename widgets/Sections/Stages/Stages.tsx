@@ -51,28 +51,34 @@ const Stages = () => {
   return (
     <div className="container">
       <Root>
-        <Category>[ Этапы работы ]</Category>
-        <Title>Шаг за шагом мы приближаемся к созданию вашего продукта</Title>
-        <Container>
-          {stages.map((stage, index) => (
-            <Item
-              style={{
-                marginTop: index % 2 !== 0 && !isWidthSm ? "60px" : "0px",
-              }}
-              key={stage.id}
-              active={active === stage.id}
-              onClick={() => setActive(stage.id)}
-            >
-              <Stage>[ {stage.id} Шаг ]</Stage>
-              <StageTitle>{stage.title}</StageTitle>
-              <Description>
-                {stage.description.map((text, index) => (
-                  <li key={index}>- {text}</li>
-                ))}
-              </Description>
-            </Item>
-          ))}
-        </Container>
+        <Wrapper>
+          <TextContainer>
+            <Category>[ Этапы работы ]</Category>
+            <Title>
+              Шаг за шагом мы приближаемся к созданию вашего продукта
+            </Title>
+          </TextContainer>
+          <Container>
+            {stages.map((stage, index) => (
+              <Item
+                style={{
+                  marginTop: index % 2 !== 0 && !isWidthSm ? "60px" : "0px",
+                }}
+                key={stage.id}
+                active={active === stage.id}
+                onClick={() => setActive(stage.id)}
+              >
+                <Stage>[ {stage.id} Шаг ]</Stage>
+                <StageTitle>{stage.title}</StageTitle>
+                <Description>
+                  {stage.description.map((text, index) => (
+                    <li key={index}>- {text}</li>
+                  ))}
+                </Description>
+              </Item>
+            ))}
+          </Container>
+        </Wrapper>
       </Root>
     </div>
   );
@@ -80,7 +86,14 @@ const Stages = () => {
 
 const Root = styled.section`
   width: 100%;
-  margin: 180px 0;
+  margin-top: 40px;
+`;
+
+const Wrapper = styled.div`
+  height: 100vh;
+`
+
+const TextContainer = styled.div`
 `;
 
 const Category = styled.span`

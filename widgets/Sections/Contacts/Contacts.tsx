@@ -59,6 +59,9 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
+  @media (max-width: 900px) {
+    margin-top: 100px;
+  }
 `;
 
 const Row = styled.div`
@@ -66,6 +69,7 @@ const Row = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 140px;
+  flex-wrap: wrap;
 `;
 
 const Category = styled.span`
@@ -99,6 +103,9 @@ const Bubbles = styled.div`
   width: 45%;
   height: 60%;
   bottom: 0px;
+  @media (max-width: 900px) {
+    display: none;
+  }
 `;
 
 const StyledImage = styled(Image)`
@@ -113,6 +120,10 @@ const ContactsContainer = styled.div`
   background: #fff;
   max-width: 529px;
   margin-bottom: 100px;
+  @media (max-width: 900px) {
+    max-width: 100%;
+    width: 100%;
+  }
 `;
 
 const ContactTitle = styled.div`
