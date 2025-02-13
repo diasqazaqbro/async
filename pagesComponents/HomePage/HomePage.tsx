@@ -12,12 +12,14 @@ import React from "react";
 const HomePage = () => {
   return (
     <Layout>
-      <Welcome />
-      <AboutUs />
-      <Projects />
-      <Service />
-      <Stages /> 
-      <Contacts />
+      <div className="wrapper">
+        <Welcome />
+        <AboutUs />
+        {/* <Projects /> */}
+        <Service />
+        {/* <Stages /> */}
+        <Contacts />
+      </div>
     </Layout>
   );
 };

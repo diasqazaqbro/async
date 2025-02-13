@@ -1,4 +1,3 @@
-import { BreakpointsEnum } from "@shared/consts/types";
 import SvgTg from "@shared/icons/SvgTg";
 import SvgWhatsapp from "@shared/icons/SvgWhatsapp";
 import { useClientSize } from "@shared/lib/hooks";
@@ -13,43 +12,62 @@ const Welcome = () => {
 
   return (
     <Root>
-      <TopContainer>
-        <Bubbles>
-          <StyledImage
-            src={isWidthMd ? "/assets/bubbleMobile.png" : "/assets/bubble1.png"}
-            alt="Bubbles"
-            layout="fill"
-            objectFit="contain"
-            priority
-          />
-        </Bubbles>
-      </TopContainer>
-      <div className="container">
-        <BottomContainer>
-          <Buttons>
-            <Button text="ОБСУДИТЬ ПРОЕКТ" />
-            <IconButton IconComponent={SvgTg} />
-            <IconButton IconComponent={SvgWhatsapp} />
-          </Buttons>
-          <Description>
-            Создаём и запускаем продукты для бизнеса: от сайтов <br /> и
-            онлайн-сервисов до мобильных приложений
-          </Description>
-        </BottomContainer>
-      </div>
+      <Flex>
+        <TopContainer>
+          <Bubbles>
+            <StyledImage
+              src={
+                isWidthMd ? "/assets/bubbleMobile.png" : "/assets/bubble1.png"
+              }
+              alt="Bubbles"
+              layout="fill"
+              objectFit="contain"
+              priority
+            />
+          </Bubbles>
+        </TopContainer>
+        <Wrapper className="container">
+          <BottomContainer>
+            <Buttons>
+              <Button text="ОБСУДИТЬ ПРОЕКТ" />
+              <IconButton IconComponent={SvgTg} />
+              <IconButton IconComponent={SvgWhatsapp} />
+            </Buttons>
+            <Description>
+              Создаём и запускаем продукты для бизнеса: от сайтов <br /> и
+              онлайн-сервисов до мобильных приложений
+            </Description>
+          </BottomContainer>
+        </Wrapper>
+      </Flex>
     </Root>
   );
 };
 
-const Root = styled.section``;
+const Root = styled.section`
+  width: 100%;
+`;
 
-const TopContainer = styled.div``;
+const Flex = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+`;
+
+const TopContainer = styled.div`
+  flex-grow: 1;
+`;
+
+const Wrapper = styled.div`
+  margin-bottom: 20px;
+`;
 
 const BottomContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 20px;
+  padding-bottom: 20px;
   @media (max-width: 990px) {
     flex-direction: column-reverse;
   }

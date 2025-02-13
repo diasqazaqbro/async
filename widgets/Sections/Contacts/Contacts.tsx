@@ -8,50 +8,64 @@ import styled from "styled-components";
 const Contacts = () => {
   return (
     <Root>
-      <div className="container">
-        <Row>
-          <Category>[ Контакты ]</Category>
-          <Title>Давайте обсудим ваш проект?</Title>
-        </Row>
-      </div>
-      <Container>
-        <Bubbles>
-          <StyledImage
-            src="/assets/contacts.png"
-            alt="Bubbles"
-            layout="fill"
-            objectFit=""
-            priority
-          />
-        </Bubbles>
+      <Bubbles>
+        <StyledImage
+          src="/assets/contacts.png"
+          alt="Bubbles"
+          layout="fill"
+          objectFit=""
+          priority
+        />
+      </Bubbles>
+      <Wrapper>
         <div className="container">
-          <ContactsContainer>
-            <ContactTitle>Заполните форму и мы свяжемся с вами</ContactTitle>
-            <Input placeholder="Имя" />
-            <Input placeholder="+7 (___) ___-__-__" />
-            <Button isFullWight text="ОБСУДИТЬ ПРОЕКТ" />
-            <Options>
-              <OptionTitle>или напишите нам</OptionTitle>
-              <Flex>
-                <IconButton IconComponent={SvgTg} />
-                <IconButton IconComponent={SvgWhatsapp} />
-              </Flex>
-            </Options>
-          </ContactsContainer>
+          <Row>
+            <Category>[ Контакты ]</Category>
+            <Title>Давайте обсудим ваш проект?</Title>
+          </Row>
         </div>
-      </Container>
+        <Container>
+          <div
+            className="container"
+            style={{ display: "flex", justifyContent: "flex-end" }}
+          >
+            <ContactsContainer>
+              <ContactTitle>Заполните форму и мы свяжемся с вами</ContactTitle>
+              <Input placeholder="Имя" />
+              <Input placeholder="+7 (___) ___-__-__" />
+              <Button isFullWight text="ОБСУДИТЬ ПРОЕКТ" />
+              <Options>
+                <OptionTitle>или напишите нам</OptionTitle>
+                <Flex>
+                  <IconButton IconComponent={SvgTg} />
+                  <IconButton IconComponent={SvgWhatsapp} />
+                </Flex>
+              </Options>
+            </ContactsContainer>
+          </div>
+        </Container>
+      </Wrapper>
     </Root>
   );
 };
 
 const Root = styled.section`
   width: 100%;
+  position: relative;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
 `;
 
 const Row = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 140px;
 `;
 
 const Category = styled.span`
@@ -77,20 +91,19 @@ const Title = styled.span`
 const Container = styled.div`
   width: 100%;
   display: flex;
-  justify-content: flex-start;
-  margin-top: 100px;
+  justify-content: flex-end;
 `;
 
 const Bubbles = styled.div`
-  position: relative;
-  width: 100%;
-  height: 70vh;
+  position: absolute;
+  width: 45%;
+  height: 60%;
+  bottom: 0px;
 `;
 
 const StyledImage = styled(Image)`
-  width: 50%;
+  width: 100%;
   height: 100%;
-  object-fit: contain;
 `;
 
 const ContactsContainer = styled.div`
@@ -98,6 +111,8 @@ const ContactsContainer = styled.div`
   padding: 32px;
   box-shadow: 0 0 130px 30px #fff;
   background: #fff;
+  max-width: 529px;
+  margin-bottom: 100px;
 `;
 
 const ContactTitle = styled.div`
@@ -105,7 +120,6 @@ const ContactTitle = styled.div`
   font-size: 20px;
   text-transform: uppercase;
   color: #282828;
-  margin-bottom: 20px;
 `;
 
 const Input = styled.input`

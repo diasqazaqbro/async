@@ -18,6 +18,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
+    overflow-x: hidden; 
   }
 
   .visually-hidden,
@@ -232,6 +233,38 @@ pre {
   max-width: 1200px;
   margin: 0 auto; 
   padding: 0 20px;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+section {
+  width: 100vw; /* Full width */
+  height: 100vh; /* Full height */
+  scroll-snap-align: start; /* Align each section at the top of the viewport */
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.wrapper  {
+  display: flex;
+  flex-direction: column; /* Stack sections vertically */
+  scroll-snap-type: y mandatory; /* Snap sections vertically */
+  height: 100vh;
+  overflow-y: scroll; /* Enable vertical scrolling */
 }
 
 

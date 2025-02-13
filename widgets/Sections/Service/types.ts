@@ -23,7 +23,7 @@ const services: Service[] = [
     id: ServiceId.MOBILE_APPS,
     title: "Мобильные приложения",
     duration: "от 120 дней",
-    image: "/assets/services1.png",
+    image: "/assets/services/1.png",
     description1:
       "Создадим мобильные приложения, которое поможет автоматизировать процессы и укрепить связь с клиентами",
     description2:
@@ -43,7 +43,7 @@ const services: Service[] = [
     id: ServiceId.MULTI_PAGE_SITE,
     title: "Многостраничный сайт",
     duration: "30-40 дней",
-    image: "/assets/services1.png",
+    image: "/assets/services/3.png",
     description1:
       "Разработка многостраничного сайта  поможет рассказать о продукте и вашем бизнесе в онлайн пространсве",
     description2:
@@ -53,7 +53,7 @@ const services: Service[] = [
     id: ServiceId.ECOMMERCE,
     title: "Интернет-магазин",
     duration: "30-40 дней",
-    image: "/assets/services1.png",
+    image: "/assets/services/4.png",
     description1:
       "Разрабатываем интернет-магазины, которые привлекают клиентов и увеличивают продажи.",
     description2:
@@ -63,7 +63,7 @@ const services: Service[] = [
     id: ServiceId.WEB_SERVICE,
     title: "Веб-сервис",
     duration: "30-40 дней",
-    image: "/assets/services1.png",
+    image: "/assets/services/5.png",
     description1:
       "Создаем функциональные веб-сервисы, которые упрощают процессы, автоматизируют задачи и помогают бизнесу расти",
     description2:
@@ -73,7 +73,7 @@ const services: Service[] = [
     id: ServiceId.SITE_IMPROVEMENTS,
     title: "Доработка сайтов и приложений",
     duration: "30-40 дней",
-    image: "/assets/services1.png",
+    image: "/assets/services/6.png",
     description1:
       "Обновляем и улучшаем уже существующие продукты, чтобы они соответствовали современным требованиям.",
     description2:
@@ -83,7 +83,7 @@ const services: Service[] = [
     id: ServiceId.DATA_ANALYTICS,
     title: "Аналитика данных",
     duration: "30-40 дней",
-    image: "/assets/services1.png",
+    image: "/assets/services/7.png",
     description1:
       "Помогаем понять, как пользователи взаимодействуют с вашими продуктами, и на основе данных принимаем лучшие решения.",
     description2:
@@ -93,7 +93,7 @@ const services: Service[] = [
     id: ServiceId.INTEGRATIONS,
     title: "Интеграции",
     duration: "30-40 дней",
-    image: "/assets/services1.png",
+    image: "/assets/services/8.png",
     description1:
       "Помогаем понять, как пользователи взаимодействуют с вашими продуктами, и на основе данных принимаем лучшие решения.",
     description2:

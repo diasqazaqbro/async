@@ -12,44 +12,48 @@ const Service = () => {
   return (
     <div className="container">
       <Root>
-        <Category>[ Услуги ]</Category>
-        <Title>
-          Стоимость наших услуг формируется индивидуально и зависит от
-          особенностей каждого проекта
-        </Title>
-        <Container>
-          <Navigation>
-            {services.map((service) => (
-              <Item
-                key={service.id}
-                active={active === service.id}
-                onClick={() => setActive(service.id)}
-              >
-                <StyledLink href={`#${service.id}`}>
-                  {service.title} <SvgArrow />
-                </StyledLink>
-              </Item>
-            ))}
-          </Navigation>
-          <View key={active}>
-            <LeftView>
-              <Duration>{currentService?.duration}</Duration>
-              <Description1>{currentService?.description1}</Description1>
-            </LeftView>
-            <RightView>
-              <Bubbles>
-                <StyledImage
-                  src={currentService?.image!}
-                  alt="Bubbles"
-                  layout="fill"
-                  objectFit="contain"
-                  priority
-                />
-              </Bubbles>
-              <Description2>{currentService?.description2}</Description2>
-            </RightView>
-          </View>
-        </Container>
+        <Wrapper>
+          <TextContainer>
+            <Category>[ Услуги ]</Category>
+            <Title>
+              Стоимость наших услуг формируется индивидуально и зависит от
+              особенностей каждого проекта
+            </Title>
+          </TextContainer>
+          <Container>
+            <Navigation>
+              {services.map((service) => (
+                <Item
+                  key={service.id}
+                  active={active === service.id}
+                  onClick={() => setActive(service.id)}
+                >
+                  <StyledLink href={`#${service.id}`}>
+                    {service.title} <SvgArrow />
+                  </StyledLink>
+                </Item>
+              ))}
+            </Navigation>
+            <View key={active}>
+              <LeftView>
+                <Duration>{currentService?.duration}</Duration>
+                <Description1>{currentService?.description1}</Description1>
+              </LeftView>
+              <RightView>
+                <Bubbles>
+                  <StyledImage
+                    src={currentService?.image!}
+                    alt="Bubbles"
+                    layout="fill"
+                    objectFit="contain"
+                    priority
+                  />
+                </Bubbles>
+                <Description2>{currentService?.description2}</Description2>
+              </RightView>
+            </View>
+          </Container>
+        </Wrapper>
       </Root>
     </div>
   );
@@ -81,7 +85,17 @@ const scaleIn = keyframes`
 
 const Root = styled.section`
   width: 100%;
-  margin: 280px 0;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+`;
+
+const TextContainer = styled.div`
+  margin-top: 120px;
 `;
 
 const Category = styled.span`
@@ -98,16 +112,19 @@ const Title = styled.span`
   text-transform: uppercase;
   color: #282828;
   @media (max-width: 990px) {
-    font-size: 32px;
-  }
-  @media (max-width: 642px) {
     font-size: 20px;
+  }
+  @media (max-width: 777px) {
+    font-size: 12px;
+  }
+  @media (max-width: 590) {
+    display: none;
   }
 `;
 
 const Container = styled.div`
   display: flex;
-  margin-top: 80px;
+  /* margin-top: 80px; */
   justify-content: space-between;
   @media (max-width: 900px) {
     flex-direction: column-reverse;
@@ -184,18 +201,21 @@ const Description1 = styled.div`
 
 const Bubbles = styled.div`
   position: relative;
-  width: 100%;
   width: 334px;
   height: 320px;
   display: flex;
   align-items: center;
   justify-content: center;
+  right: 60px;
+  @media (max-width: 900px) {
+    display: none;
+  }
 `;
 
 const StyledImage = styled(Image)`
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   animation: ${scaleIn} 0.4s ease-in-out;
 `;
 

@@ -5,20 +5,22 @@ const AboutUs = () => {
   return (
     <div className="container">
       <Root>
-        <Category>[ О НАС ]</Category>
-        <Title>
-          МЫ БЕРЕМ ОГРАНИЧЕННОЕ КОЛИЧЕСТВО ПРОЕКТОВ, ЧТОБЫ ОБЕСПЕЧИВАТЬ
-          МАКСИМАЛЬНЫЙ КОМФОРТ СОТРУДНИЧЕСТВА — КАК БУДТО МЫ ЧАСТЬ ВАШЕЙ
-          КОМАНДЫ.
-        </Title>
-        <Container>
-          <Subtitle>
-            КАЖДОЕ НАШЕ РЕШЕНИЕ ОБОСНОВАНО ДЕЛАЕМ{" "}
-            <Highlight>УВЕРЕННО.</Highlight> ДЕЙСТВУЕМ{" "}
-            <Highlight>СМЕЛО.</Highlight> СОЗДАЕМ{" "}
-            <Highlight>ЛОГИЧНО.</Highlight>
-          </Subtitle>
-        </Container>
+        <div>
+          <Category>[ О НАС ]</Category>
+          <Title>
+            МЫ БЕРЕМ ОГРАНИЧЕННОЕ КОЛИЧЕСТВО ПРОЕКТОВ, ЧТОБЫ ОБЕСПЕЧИВАТЬ
+            МАКСИМАЛЬНЫЙ КОМФОРТ СОТРУДНИЧЕСТВА — КАК БУДТО МЫ ЧАСТЬ ВАШЕЙ
+            КОМАНДЫ.
+          </Title>
+          <Container>
+            <Subtitle>
+              КАЖДОЕ НАШЕ РЕШЕНИЕ ОБОСНОВАНО ДЕЛАЕМ{" "}
+              <Highlight>УВЕРЕННО.</Highlight> ДЕЙСТВУЕМ{" "}
+              <Highlight>СМЕЛО.</Highlight> СОЗДАЕМ{" "}
+              <Highlight>ЛОГИЧНО.</Highlight>
+            </Subtitle>
+          </Container>
+        </div>
       </Root>
     </div>
   );
@@ -27,6 +29,8 @@ const AboutUs = () => {
 const Root = styled.section`
   width: 100%;
   margin: 280px 0;
+  display: flex;
+  align-items: center;
 `;
 
 const Category = styled.span`
