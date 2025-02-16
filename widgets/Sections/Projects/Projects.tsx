@@ -1,25 +1,106 @@
 import { BreakpointsEnum } from "@shared/consts/types";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
 
 const images = [
-  { src: "/assets/portfolio/1.png", width: 200, height: 120 },
-  { src: "/assets/portfolio/2.png", width: 100, height: 100 },
-  { src: "/assets/portfolio/3.png", width: 140, height: 140 },
-  { src: "/assets/portfolio/4.png", width: 200, height: 110 },
-  { src: "/assets/portfolio/5.png", width: 130, height: 130 },
-  { src: "/assets/portfolio/6.png", width: 60, height: 120 },
-  { src: "/assets/portfolio/7.png", width: 100, height: 100 },
-  { src: "/assets/portfolio/8.png", width: 60, height: 140 },
-  { src: "/assets/portfolio/9.png", width: 70, height: 110 },
-  { src: "/assets/portfolio/10.png", width: 130, height: 130 },
-  { src: "/assets/portfolio/11.png", width: 120, height: 120 },
-  { src: "/assets/portfolio/12.png", width: 70, height: 100 },
-  { src: "/assets/portfolio/13.png", width: 100, height: 140 },
-  { src: "/assets/portfolio/14.png", width: 110, height: 110 },
-  { src: "/assets/portfolio/15.png", width: 130, height: 130 },
-  { src: "/assets/portfolio/16.png", width: 120, height: 120 },
+  {
+    src: "/assets/portfolio/1.png",
+    width: 200,
+    height: 120,
+    link: "https://hudos.kz/",
+  },
+  {
+    src: "/assets/portfolio/2.png",
+    width: 100,
+    height: 100,
+    link: "https://hudos.kz/",
+  },
+  {
+    src: "/assets/portfolio/3.png",
+    width: 140,
+    height: 140,
+    link: "https://hudos.kz/",
+  },
+  {
+    src: "/assets/portfolio/4.png",
+    width: 200,
+    height: 110,
+    link: "https://hudos.kz/",
+  },
+  {
+    src: "/assets/portfolio/5.png",
+    width: 130,
+    height: 130,
+    link: "https://hudos.kz/",
+  },
+  {
+    src: "/assets/portfolio/6.png",
+    width: 60,
+    height: 120,
+    link: "https://hudos.kz/",
+  },
+  {
+    src: "/assets/portfolio/7.png",
+    width: 100,
+    height: 100,
+    link: "https://hudos.kz/",
+  },
+  {
+    src: "/assets/portfolio/8.png",
+    width: 60,
+    height: 140,
+    link: "https://hudos.kz/",
+  },
+  {
+    src: "/assets/portfolio/9.png",
+    width: 70,
+    height: 110,
+    link: "https://hudos.kz/",
+  },
+  {
+    src: "/assets/portfolio/10.png",
+    width: 130,
+    height: 130,
+    link: "https://hudos.kz/",
+  },
+  {
+    src: "/assets/portfolio/11.png",
+    width: 120,
+    height: 120,
+    link: "https://hudos.kz/",
+  },
+  {
+    src: "/assets/portfolio/12.png",
+    width: 70,
+    height: 100,
+    link: "https://hudos.kz/",
+  },
+  {
+    src: "/assets/portfolio/13.png",
+    width: 100,
+    height: 140,
+    link: "https://hudos.kz/",
+  },
+  {
+    src: "/assets/portfolio/14.png",
+    width: 110,
+    height: 110,
+    link: "https://hudos.kz/",
+  },
+  {
+    src: "/assets/portfolio/15.png",
+    width: 130,
+    height: 130,
+    link: "https://hudos.kz/",
+  },
+  {
+    src: "/assets/portfolio/16.png",
+    width: 120,
+    height: 120,
+    link: "https://hudos.kz/",
+  },
 ];
 
 const Projects = () => {
@@ -46,8 +127,8 @@ const Projects = () => {
             </Title>
           </TextContainer>
           <Container>
-            {images.map(({ src, width, height }, index) => (
-              <Item key={index}>
+            {images.map(({ src, width, height, link }, index) => (
+              <Item href={link} target="_blank" key={index}>
                 <ImageWrapper>
                   <StyledProjectImage
                     src={src}
@@ -154,7 +235,7 @@ const Container = styled.div`
   }
 `;
 
-const Item = styled.div`
+const Item = styled(Link)`
   border-radius: 24px;
   padding: 24px;
   backdrop-filter: blur(4px);

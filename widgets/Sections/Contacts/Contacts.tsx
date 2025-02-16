@@ -1,14 +1,18 @@
 import { contactLink } from "@shared/consts/routes";
 import SvgTg from "@shared/icons/SvgTg";
 import SvgWhatsapp from "@shared/icons/SvgWhatsapp";
-import { Button, IconButton } from "@shared/ui";
+import { sendContact } from "@shared/lib/utils/sendContact";
+import { Button, IconButton, PhoneInput } from "@shared/ui";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const Contacts = () => {
   const router = useRouter();
+
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
 
   return (
     <Root id="contacts">
@@ -35,9 +39,21 @@ const Contacts = () => {
           >
             <ContactsContainer>
               <ContactTitle>Заполните форму и мы свяжемся с вами</ContactTitle>
-              <Input placeholder="Имя" />
-              <Input placeholder="+7 (___) ___-__-__" />
-              <Button isFullWight text="ОБСУДИТЬ ПРОЕКТ" />
+              <Input
+                onChange={(e) => setName(e.target.value)}
+                value={name}
+                placeholder="Имя"
+              />
+              <PhoneInput
+                value={phone}
+                onChange={(value) => setPhone(value)}
+                placeholder="+7 (___) ___-__-__"
+              />
+              <Button
+                onClick={() => sendContact(name, phone)}
+                isFullWight
+                text="ОБСУДИТЬ ПРОЕКТ"
+              />
               <Options>
                 <OptionTitle>или напишите нам</OptionTitle>
                 <Flex>
@@ -141,6 +157,7 @@ const ContactTitle = styled.div`
   font-size: 20px;
   text-transform: uppercase;
   color: #282828;
+  margin-bottom: 20px;
 `;
 
 const Input = styled.input`
