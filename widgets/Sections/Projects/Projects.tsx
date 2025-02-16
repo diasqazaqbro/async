@@ -24,7 +24,7 @@ const images = [
 
 const Projects = () => {
   return (
-    <Root>
+    <Root id="projects">
       <Background>
         <Bubbles>
           <StyledImage

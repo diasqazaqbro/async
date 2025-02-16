@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const AboutUs = () => {
   return (
-    <div className="container">
+    <div id="about-us" className="container">
       <Root>
         <div>
           <Category>[ О НАС ]</Category>

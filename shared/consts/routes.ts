@@ -11,12 +11,17 @@ export const Routes = {
     path: "#services",
     name: "УСЛУГИ",
   },
-  stages: {
-    path: "#stages",
-    name: "ЭТАПЫ РАБОТЫ",
-  },
+  // stages: {
+  //   path: "#stages",
+  //   name: "ЭТАПЫ РАБОТЫ",
+  // },
   contacts: {
     path: "#contacts",
     name: "КОНТАКТЫ",
   },
+};
+
+export const contactLink = {
+  tg: "ddd",
+  whatsApp: "dd",
 };

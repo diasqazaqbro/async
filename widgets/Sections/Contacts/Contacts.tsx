@@ -1,13 +1,17 @@
+import { contactLink } from "@shared/consts/routes";
 import SvgTg from "@shared/icons/SvgTg";
 import SvgWhatsapp from "@shared/icons/SvgWhatsapp";
 import { Button, IconButton } from "@shared/ui";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
 
 const Contacts = () => {
+  const router = useRouter();
+
   return (
-    <Root>
+    <Root id="contacts">
       <Bubbles>
         <StyledImage
           src="/assets/contacts.png"
@@ -37,8 +41,14 @@ const Contacts = () => {
               <Options>
                 <OptionTitle>или напишите нам</OptionTitle>
                 <Flex>
-                  <IconButton IconComponent={SvgTg} />
-                  <IconButton IconComponent={SvgWhatsapp} />
+                  <IconButton
+                    onClick={() => router.push(contactLink.tg)}
+                    IconComponent={SvgTg}
+                  />
+                  <IconButton
+                    onClick={() => router.push(contactLink.whatsApp)}
+                    IconComponent={SvgWhatsapp}
+                  />
                 </Flex>
               </Options>
             </ContactsContainer>

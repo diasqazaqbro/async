@@ -1,41 +1,89 @@
 import SvgTg from "@shared/icons/SvgTg";
 import SvgWhatsapp from "@shared/icons/SvgWhatsapp";
-import { Routes } from "@shared/consts/routes";
+import { contactLink, Routes } from "@shared/consts/routes";
 import { Button, IconButton, Logo } from "@shared/ui";
 import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
-import { useClientSize } from "@shared/lib/hooks";
+import { useClientSize, useToggle } from "@shared/lib/hooks";
 import SvgBurgerOpen from "@shared/icons/SvgBurgerOpen";
+import Image from "next/image";
+import { ContactsModal } from "@widgets/ContactsModal";
+import { useRouter } from "next/router";
 
 const Header = () => {
   const { getIsBreakpoint } = useClientSize();
   const isWidthMd = getIsBreakpoint("md");
   const isWidthSm = getIsBreakpoint("s");
 
+  const router = useRouter();
+
+  const { toggle, isOpened } = useToggle();
+  const { toggle: toggleModal, isOpened: isOpenedModal } = useToggle();
+
   return (
-    <Root>
-      <InnerContainer>
-        <Logo />
-        {!isWidthMd && (
-          <Navigation>
+    <>
+      <ContactsModal onClose={toggleModal} isVisible={isOpenedModal} />
+      <Root>
+        <InnerContainer>
+          <Logo />
+          {!isWidthMd && (
+            <Navigation>
+              {Object.values(Routes).map(({ path, name }) => (
+                <NavItem key={path} href={path}>
+                  {name}
+                </NavItem>
+              ))}
+            </Navigation>
+          )}
+
+          <Buttons>
+            {!isWidthSm && (
+              <Button onClick={toggleModal} text="ОБСУДИТЬ ПРОЕКТ" />
+            )}
+
+            <IconButton
+              onClick={() => router.push(contactLink.tg)}
+              IconComponent={SvgTg}
+            />
+            <IconButton
+              onClick={() => router.push(contactLink.whatsApp)}
+              IconComponent={SvgWhatsapp}
+            />
+            {isWidthMd && (
+              <IconButton onClick={toggle} IconComponent={SvgBurgerOpen} />
+            )}
+          </Buttons>
+        </InnerContainer>
+
+        {/* <StyledModal onClose={toggle} isVisible={isWidthMd && isOpened}>
+        ddd
+      </StyledModal> */}
+      </Root>
+      {isWidthMd && isOpened && (
+        <Burger>
+          <Background>
+            <Bubbles>
+              <StyledImage
+                src="/assets/bubble2.png"
+                alt="Bubbles"
+                layout="fill"
+                objectFit="contain"
+                priority
+              />
+            </Bubbles>
+          </Background>
+          <BurgerContainer>
+            {" "}
             {Object.values(Routes).map(({ path, name }) => (
-              <NavItem key={path} href={path}>
+              <ResponsiveNavItem key={path} href={path}>
                 {name}
-              </NavItem>
+              </ResponsiveNavItem>
             ))}
-          </Navigation>
-        )}
-
-        <Buttons>
-          {!isWidthSm && <Button text="ОБСУДИТЬ ПРОЕКТ" />}
-
-          <IconButton IconComponent={SvgTg} />
-          <IconButton IconComponent={SvgWhatsapp} />
-          {isWidthMd && <IconButton IconComponent={SvgBurgerOpen} />}
-        </Buttons>
-      </InnerContainer>
-    </Root>
+          </BurgerContainer>
+        </Burger>
+      )}
+    </>
   );
 };
 
@@ -67,6 +115,8 @@ const InnerContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  z-index: 10;
 `;
 
 const Navigation = styled.div`
@@ -86,6 +136,55 @@ const Buttons = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
+`;
+
+const Burger = styled.div`
+  top: -20px;
+  height: 100vh;
+  width: 100vw;
+  z-index: 3;
+  position: absolute;
+  background-color: ${({ theme: { colors } }) => colors.mainColor.background};
+`;
+
+const BurgerContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 48px;
+  margin-top: 50px;
+  z-index: 10;
+  position: relative;
+`;
+
+const Background = styled.div`
+  position: relative;
+  @media (max-width: 730px) {
+    display: none;
+  }
+  z-index: 10;
+`;
+
+const Bubbles = styled.div`
+  position: absolute;
+  width: 100vh;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: -80px;
+  top: 90px;
+`;
+
+const StyledImage = styled(Image)``;
+
+const ResponsiveNavItem = styled(Link)`
+  font-weight: 600;
+  font-size: 48px;
+  text-transform: uppercase;
+  color: #282828;
 `;
 
 export default Header;

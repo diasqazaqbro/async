@@ -10,7 +10,7 @@ const Service = () => {
   const currentService = services.find((service) => service.id === active);
 
   return (
-    <div className="container">
+    <div id="services" className="container">
       <Root>
         <Wrapper>
           <TextContainer>

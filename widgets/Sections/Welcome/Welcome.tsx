@@ -1,8 +1,12 @@
+import { contactLink } from "@shared/consts/routes";
 import SvgTg from "@shared/icons/SvgTg";
 import SvgWhatsapp from "@shared/icons/SvgWhatsapp";
-import { useClientSize } from "@shared/lib/hooks";
+import { useClientSize, useToggle } from "@shared/lib/hooks";
 import { Button, IconButton } from "@shared/ui";
+import { ContactsModal } from "@widgets/ContactsModal";
+import { Url } from "next/dist/shared/lib/router/router";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
 
@@ -10,8 +14,14 @@ const Welcome = () => {
   const { getIsBreakpoint } = useClientSize();
   const isWidthMd = getIsBreakpoint("md");
 
+  const router = useRouter();
+
+  const { toggle: toggleModal, isOpened: isOpenedModal } = useToggle();
+
   return (
-    <Root>
+    <Root id="welcome">
+      <ContactsModal onClose={toggleModal} isVisible={isOpenedModal} />
+
       <Flex>
         <TopContainer>
           <Bubbles>
@@ -29,9 +39,15 @@ const Welcome = () => {
         <Wrapper className="container">
           <BottomContainer>
             <Buttons>
-              <Button text="ОБСУДИТЬ ПРОЕКТ" />
-              <IconButton IconComponent={SvgTg} />
-              <IconButton IconComponent={SvgWhatsapp} />
+              <Button onClick={toggleModal} text="ОБСУДИТЬ ПРОЕКТ" />
+              <IconButton
+                onClick={() => router.push(contactLink.tg)}
+                IconComponent={SvgTg}
+              />
+              <IconButton
+                onClick={() => router.push(contactLink.whatsApp)}
+                IconComponent={SvgWhatsapp}
+              />
             </Buttons>
             <Description>
               Создаём и запускаем продукты для бизнеса: от сайтов <br /> и
@@ -55,8 +71,7 @@ const Flex = styled.div`
   height: 100vh;
 `;
 
-const TopContainer = styled.div`
-`;
+const TopContainer = styled.div``;
 
 const Wrapper = styled.div`
   margin-bottom: 20px;
@@ -89,8 +104,8 @@ const Description = styled.div`
   color: #696969;
   @media (max-width: 990px) {
     text-align: center;
-    margin-bottom: 20px;  font-size: 16px;
-
+    margin-bottom: 20px;
+    font-size: 16px;
   }
 `;
 
