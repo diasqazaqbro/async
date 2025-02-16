@@ -10,6 +10,7 @@ import SvgWhatsapp from "@shared/icons/SvgWhatsapp";
 import { useRouter } from "next/router";
 import { contactLink } from "@shared/consts/routes";
 import { sendContact } from "@shared/lib/utils/sendContact";
+import { BreakpointsEnum } from "@shared/consts/types";
 
 export type ContactsModalProps = {
   isVisible?: boolean;
@@ -122,6 +123,13 @@ const Body = styled.div`
   border-radius: 24px;
   padding: 32px;
   max-width: 529px;
+
+  @media (max-width: ${BreakpointsEnum.sm}px) {
+    position: absolute;
+    bottom: 0;
+    border-radius: 24px 24px 0 0;
+    max-width: 100%;
+  }
 `;
 
 const ContactTitle = styled.div`
