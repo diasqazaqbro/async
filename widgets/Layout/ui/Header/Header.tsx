@@ -55,10 +55,6 @@ const Header = () => {
             )}
           </Buttons>
         </InnerContainer>
-
-        {/* <StyledModal onClose={toggle} isVisible={isWidthMd && isOpened}>
-        ddd
-      </StyledModal> */}
       </Root>
       {isWidthMd && isOpened && (
         <Burger>
@@ -74,9 +70,8 @@ const Header = () => {
             </Bubbles>
           </Background>
           <BurgerContainer>
-            {" "}
             {Object.values(Routes).map(({ path, name }) => (
-              <ResponsiveNavItem key={path} href={path}>
+              <ResponsiveNavItem onClick={toggle} key={path} href={path}>
                 {name}
               </ResponsiveNavItem>
             ))}
