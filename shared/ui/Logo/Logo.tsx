@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Logo = () => {
-  return <Root>VERTIGO</Root>;
+  return <Root>ASYNC.KZ</Root>;
 };
 
 const Root = styled.div`

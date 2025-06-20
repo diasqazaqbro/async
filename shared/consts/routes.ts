@@ -22,6 +22,6 @@ export const Routes = {
 };
 
 export const contactLink = {
-  tg: "https://t.me/vertigoapps",
-  whatsApp: "https://wa.me/+77017660600",
+  tg: "https://t.me/ultramegagood",
+  whatsApp: "https://wa.me/+77006506712",
 };
