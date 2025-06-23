@@ -2,6 +2,7 @@ import { BreakpointsEnum } from "@shared/consts/types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useTranslation } from "next-i18next";
 import styled from "styled-components";
 
 const images = [
@@ -104,6 +105,8 @@ const images = [
 ];
 
 const Projects = () => {
+  const { t } = useTranslation("common");
+
   return (
     <Root id="projects">
       <Background>
@@ -120,11 +123,8 @@ const Projects = () => {
       <div className="container">
         <Wrapper>
           <TextContainer>
-            <Category>| Проекты |</Category>
-            <Title>
-              нам доверяют крупные компании и стартапы: помогаем вдохнуть новую
-              жизнь в масштабные проекты или создать продукт с нуля
-            </Title>
+            <Category>{t("projects_category")}</Category>
+            <Title>{t("projects_title")}</Title>
           </TextContainer>
           <Container>
             {images.map(({ src, width, height, link }, index) => (

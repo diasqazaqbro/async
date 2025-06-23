@@ -4,52 +4,58 @@ import { ServiceId, services } from "./types";
 import SvgArrow from "@shared/icons/SvgArrow";
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslation } from "next-i18next";
 
 const Service = () => {
   const [active, setActive] = useState<ServiceId>(ServiceId.MOBILE_APPS);
-  const currentService = services.find((service) => service.id === active);
+  const { t } = useTranslation("common");
+
+  const current = t(`services.${active}`, { returnObjects: true }) as {
+    title: string;
+    duration: string;
+    image: string;
+    description1: string;
+    description2: string;
+  };
 
   return (
     <div id="services" className="container">
       <Root>
         <Wrapper>
           <TextContainer>
-            <Category>[ Услуги ]</Category>
-            <Title>
-              Стоимость наших услуг формируется индивидуально и зависит от
-              особенностей каждого проекта
-            </Title>
+            <Category>{t("service_category")}</Category>
+            <Title>{t("service_title")}</Title>
           </TextContainer>
           <Container>
             <Navigation>
-              {services.map((service) => (
+              {Object.values(ServiceId).map((id) => (
                 <Item
-                  key={service.id}
-                  active={active === service.id}
-                  onClick={() => setActive(service.id)}
+                  key={id}
+                  active={active === id}
+                  onClick={() => setActive(id)}
                 >
-                  <StyledLink href={`#${service.id}`}>
-                    {service.title} <SvgArrow />
+                  <StyledLink href={`#${id}`}>
+                    {t(`services.${id}.title`)} <SvgArrow />
                   </StyledLink>
                 </Item>
               ))}
             </Navigation>
             <View key={active}>
               <LeftView>
-                <Duration>{currentService?.duration}</Duration>
-                <Description1>{currentService?.description1}</Description1>
+                <Duration>{current?.duration}</Duration>
+                <Description1>{current?.description1}</Description1>
               </LeftView>
               <RightView>
                 <Bubbles>
                   <StyledImage
-                    src={currentService?.image!}
+                    src={current?.image!}
                     alt="Bubbles"
                     layout="fill"
                     objectFit="contain"
                     priority
                   />
                 </Bubbles>
-                <Description2>{currentService?.description2}</Description2>
+                <Description2>{current?.description2}</Description2>
               </RightView>
             </View>
           </Container>

@@ -1,23 +1,19 @@
 export const Routes = {
   aboutUs: {
     path: "#about-us",
-    name: "О НАС",
+    nameKey: "routes.about_us",
   },
   projects: {
     path: "#projects",
-    name: "ПРОЕКТЫ",
+    nameKey: "routes.projects",
   },
   services: {
     path: "#services",
-    name: "УСЛУГИ",
+    nameKey: "routes.services",
   },
-  // stages: {
-  //   path: "#stages",
-  //   name: "ЭТАПЫ РАБОТЫ",
-  // },
   contacts: {
     path: "#contacts",
-    name: "КОНТАКТЫ",
+    nameKey: "routes.contacts",
   },
 };
 
