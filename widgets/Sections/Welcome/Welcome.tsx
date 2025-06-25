@@ -19,6 +19,9 @@ const Welcome = () => {
 
   const { toggle: toggleModal, isOpened: isOpenedModal } = useToggle();
 
+  const { i18n } = useTranslation();
+  const isArabic = i18n.language === "ae";
+
   return (
     <Root id="welcome">
       <ContactsModal onClose={toggleModal} isVisible={isOpenedModal} />
@@ -28,7 +31,13 @@ const Welcome = () => {
           <Bubbles>
             <StyledImage
               src={
-                isWidthMd ? "/assets/bubbleMobile.png" : "/assets/bubble1.png"
+                isArabic
+                  ? isWidthMd
+                    ? "/assets/bubbleMobile-ae.png"
+                    : "/assets/bubble1-ae.png"
+                  : isWidthMd
+                  ? "/assets/bubbleMobile.png"
+                  : "/assets/bubble1.png"
               }
               alt="Bubbles"
               layout="fill"

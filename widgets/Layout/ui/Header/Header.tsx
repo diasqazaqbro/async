@@ -43,7 +43,7 @@ const Header = () => {
             {!isWidthSm && (
               <Button
                 onClick={() => router.push(contactLink.whatsApp)}
-                text="ОБСУДИТЬ ПРОЕКТ"
+                text={t("welcome_discuss")}
               />
             )}
 
