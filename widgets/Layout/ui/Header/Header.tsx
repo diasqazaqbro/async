@@ -10,6 +10,7 @@ import SvgBurgerOpen from "@shared/icons/SvgBurgerOpen";
 import Image from "next/image";
 import { ContactsModal } from "@widgets/ContactsModal";
 import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 
 const Header = () => {
   const { getIsBreakpoint } = useClientSize();
@@ -20,6 +21,7 @@ const Header = () => {
 
   const { toggle, isOpened } = useToggle();
   const { toggle: toggleModal, isOpened: isOpenedModal } = useToggle();
+  const { t } = useTranslation("common");
 
   return (
     <>
@@ -29,9 +31,9 @@ const Header = () => {
           <Logo />
           {!isWidthMd && (
             <Navigation>
-              {Object.values(Routes).map(({ path, name }) => (
+              {Object.values(Routes).map(({ path, nameKey }) => (
                 <NavItem key={path} href={path}>
-                  {name}
+                  {t(nameKey)}
                 </NavItem>
               ))}
             </Navigation>
@@ -39,7 +41,10 @@ const Header = () => {
 
           <Buttons>
             {!isWidthSm && (
-              <Button onClick={toggleModal} text="ОБСУДИТЬ ПРОЕКТ" />
+              <Button
+                onClick={() => router.push(contactLink.whatsApp)}
+                text={t("welcome_discuss")}
+              />
             )}
 
             <IconButton
@@ -70,9 +75,9 @@ const Header = () => {
             </Bubbles>
           </Background>
           <BurgerContainer>
-            {Object.values(Routes).map(({ path, name }) => (
-              <ResponsiveNavItem onClick={toggle} key={path} href={path}>
-                {name}
+            {Object.values(Routes).map(({ path, nameKey }) => (
+              <ResponsiveNavItem key={path} href={path}>
+                {t(nameKey)}
               </ResponsiveNavItem>
             ))}
           </BurgerContainer>

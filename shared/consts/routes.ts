@@ -1,27 +1,23 @@
 export const Routes = {
   aboutUs: {
     path: "#about-us",
-    name: "О НАС",
+    nameKey: "routes.about_us",
   },
   projects: {
     path: "#projects",
-    name: "ПРОЕКТЫ",
+    nameKey: "routes.projects",
   },
   services: {
     path: "#services",
-    name: "УСЛУГИ",
+    nameKey: "routes.services",
   },
-  // stages: {
-  //   path: "#stages",
-  //   name: "ЭТАПЫ РАБОТЫ",
-  // },
   contacts: {
     path: "#contacts",
-    name: "КОНТАКТЫ",
+    nameKey: "routes.contacts",
   },
 };
 
 export const contactLink = {
-  tg: "https://t.me/vertigoapps",
-  whatsApp: "https://wa.me/+77017660600",
+  tg: "https://t.me/ultramegagood",
+  whatsApp: "https://wa.me/+77006506712",
 };

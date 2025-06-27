@@ -1,9 +1,12 @@
 import { BreakpointsEnum } from "@shared/consts/types";
 import React from "react";
+import { useTranslation } from "next-i18next";
 import styled from "styled-components";
 
 const Logo = () => {
-  return <Root>VERTIGO</Root>;
+  const { t } = useTranslation("common");
+
+  return <Root>{t("name")}</Root>;
 };
 
 const Root = styled.div`
